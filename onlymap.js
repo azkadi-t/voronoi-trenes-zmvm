@@ -97275,14 +97275,6 @@ class Rue extends Su {
     this.errorPanel || (this.errorPanel = Que(this)), this.errorPanel.update(s);
   }
 }
-bI({
-  type: "IconLayer",
-  deckClass: If,
-  props: [
-    { attr: "get-position", kind: "accessor", deckProp: "getPosition", required: !0 },
-    { attr: "get-icon", kind: "accessor", deckProp: "getIcon", required: !0 }
-  ]
-});
 bu("om-map", Rue);
 class Fue extends Su {
   connectedCallback() {
