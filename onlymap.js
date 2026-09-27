@@ -43965,7 +43965,6 @@ class If extends Vo {
   updateState(A) {
     super.updateState(A);
     const { props: t, oldProps: i, changeFlags: r } = A, s = this.getAttributeManager(), { iconAtlas: n, iconMapping: o, data: a, getIcon: c, textureParameters: h } = t, { iconManager: C } = this.state;
-    const iconAccessor = (feature, info) => { const value = c(feature, info); return typeof value === "string" ? { url: value } : value; };
     if (typeof n == "string")
       return;
     const d = n || this.internalState.isAsyncPropLoading("iconAtlas");
@@ -43975,7 +43974,7 @@ class If extends Vo {
       iconAtlas: n,
       iconMapping: d ? o : null,
       textureParameters: h
-    }), d ? i.iconMapping !== t.iconMapping && s.invalidate("getIcon") : (r.dataChanged || r.updateTriggersChanged && (r.updateTriggersChanged.all || r.updateTriggersChanged.getIcon)) && C.packIcons(a, iconAccessor), r.extensionsChanged && (this.state.model?.destroy(), this.state.model = this._getModel(), s.invalidateAll());
+    }), d ? i.iconMapping !== t.iconMapping && s.invalidate("getIcon") : (r.dataChanged || r.updateTriggersChanged && (r.updateTriggersChanged.all || r.updateTriggersChanged.getIcon)) && C.packIcons(a, c), r.extensionsChanged && (this.state.model?.destroy(), this.state.model = this._getModel(), s.invalidateAll());
   }
   /* eslint-enable max-statements, complexity */
   get isLoaded() {
@@ -80782,26 +80781,6 @@ bI({
   ]
 });
 bI({
-  type: "IconLayer",
-  deckClass: If,
-  props: [
-    { attr: "get-position", kind: "accessor", deckProp: "getPosition", required: !0 },
-    { attr: "get-icon", kind: "accessor", deckProp: "getIcon", required: !0 },
-    { attr: "get-color", kind: "accessor", deckProp: "getColor" },
-    { attr: "get-size", kind: "accessor", deckProp: "getSize" },
-    { attr: "get-angle", kind: "accessor", deckProp: "getAngle" },
-    { attr: "get-pixel-offset", kind: "accessor", deckProp: "getPixelOffset" },
-    { attr: "size-scale", kind: "scalar", deckProp: "sizeScale", type: "number", default: 1 },
-    { attr: "size-units", kind: "scalar", deckProp: "sizeUnits", type: "string", default: "pixels" },
-    { attr: "size-min-pixels", kind: "scalar", deckProp: "sizeMinPixels", type: "number" },
-    { attr: "size-max-pixels", kind: "scalar", deckProp: "sizeMaxPixels", type: "number" },
-    { attr: "billboard", kind: "scalar", deckProp: "billboard", type: "boolean", default: !0 },
-    { attr: "pickable", kind: "scalar", deckProp: "pickable", type: "boolean", default: !1 },
-    { attr: "visible", kind: "scalar", deckProp: "visible", type: "boolean", default: !0 },
-    { attr: "opacity", kind: "scalar", deckProp: "opacity", type: "number", default: 1 }
-  ]
-});
-bI({
   type: "GeoJsonLayer",
   deckClass: hf,
   props: [
@@ -97296,6 +97275,14 @@ class Rue extends Su {
     this.errorPanel || (this.errorPanel = Que(this)), this.errorPanel.update(s);
   }
 }
+bI({
+  type: "IconLayer",
+  deckClass: If,
+  props: [
+    { attr: "get-position", kind: "accessor", deckProp: "getPosition", required: !0 },
+    { attr: "get-icon", kind: "accessor", deckProp: "getIcon", required: !0 }
+  ]
+});
 bu("om-map", Rue);
 class Fue extends Su {
   connectedCallback() {
